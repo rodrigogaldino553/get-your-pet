@@ -23,6 +23,8 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
 
+    # add a treatment when @pet.photo is nil to set a default picture
+
     respond_to do |format|
       if @pet.save
         format.html { redirect_to pet_url(@pet), notice: "Pet was successfully created." }
@@ -65,6 +67,6 @@ class PetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pet_params
-      params.require(:pet).permit(:name, :history, :born, :city)
+      params.require(:pet).permit(:name, :history, :born, :city, :photo)
     end
 end

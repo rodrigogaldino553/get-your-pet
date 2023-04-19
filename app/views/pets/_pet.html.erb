@@ -1,4 +1,10 @@
 <div id="<%= dom_id pet %>">
+  <% if pet.photo.attached? %> 
+    <p>
+      <%= image_tag pet.photo, style: 'object-fit: cover;' %>
+    </p>
+  <% end %>
+
   <p>
     <strong>Name:</strong>
     <%= pet.name %>
