@@ -25,7 +25,9 @@ class PetsController < ApplicationController
     @pet = Pet.new(pet_params)
     @pet.user_id = current_user.id
 
-    # add a treatment when @pet.photo is nil to set a default picture
+    # add a treatment when @pet.photo is nil to set a defaut photo
+    # but to be more efficient we dont save this default pic on our storage
+    # it'll be made inside a helper that will set a asset in just time
 
     respond_to do |format|
       if @pet.save
