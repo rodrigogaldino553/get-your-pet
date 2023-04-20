@@ -23,6 +23,7 @@ class PetsController < ApplicationController
   # POST /pets or /pets.json
   def create
     @pet = Pet.new(pet_params)
+    @pet.user_id = current_user.id
 
     # add a treatment when @pet.photo is nil to set a default picture
 
