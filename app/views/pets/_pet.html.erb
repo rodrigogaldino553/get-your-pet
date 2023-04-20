@@ -1,33 +1,21 @@
 <div id="<%= dom_id pet %>">
-  <% if pet.photo.attached? %> 
-    <p>
-      <%= image_tag pet.photo, style: 'object-fit: cover;' %>
-    </p>
-  <% end %>
-
-  <p>
-    <strong>Name:</strong>
-    <%= pet.name %>
-  </p>
-
-  <p>
-    <strong>History:</strong>
-    <%= raw(pet.history) %>
-  </p>
-
-  <p>
-    <strong>Age:</strong>
-    <%= time_ago_in_words(pet.born) %>
-  </p>
-
-  <p>
-    <strong>City:</strong>
-    <%= pet.city %>
-  </p>
-
-  <p>
-    <strong>Contact:</strong>
-    <%= link_to pet.user.email %>
-  </p>
-
+  <div class="card pet">
+    <% pet_photo = pet.photo.attached? ? pet.photo : asset_path('kimi.png') %>
+    <%= image_tag pet_photo, alt: 'kimi picture', class: 'card-img-top' %>
+    <div class="card-body">
+      <h5 class="card-title">My name: <%= pet.name %></h5>
+      <p class="card-text">My history: <%= raw(pet.history[...50]) %></p>
+      <p class="card-text"><small class="text-muted">age: <%= time_ago_in_words(pet.born) %></small></p>
+    </div>
+    <div class="card-footer">
+      <ul>
+        <li>
+          <%= pet.city %>
+        </li>
+        <li>
+          <%= link_to pet.user.email %>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

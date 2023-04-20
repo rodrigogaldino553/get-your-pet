@@ -3,12 +3,13 @@
 <h1>Pets</h1>
 
 <div id="pets">
-  <% @pets.each do |pet| %>
-    <%= render pet %>
-    <p>
-      <%= link_to "Show this pet", pet %>
-    </p>
-  <% end %>
+  <div class="card-group">
+    <% @pets.each do |pet| %>
+      <%= link_to pet do %>
+        <%= render pet %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
 <%= link_to "New pet", new_pet_path %>
